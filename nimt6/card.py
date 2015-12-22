@@ -1,3 +1,6 @@
+from functools import total_ordering
+
+@total_ordering
 class Card(object):
     """Represents a card in the 6 nimt game"""
     def __init__(self, rank):
@@ -17,3 +20,9 @@ class Card(object):
             self.value = 2
         else:
             self.value = 1
+
+    def __eq__(self, other):
+        return self.rank == other.rank
+
+    def __lt__(self, other):
+        return self.rank < other.rank
